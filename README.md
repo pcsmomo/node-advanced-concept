@@ -39,12 +39,39 @@ Function in Node's 'crypto' library
   - lib: all javascript definitions
   - src: c++ implementation
 
-[pdkdf2](https://github.com/nodejs/node/blob/master/lib/internal/crypto/pbkdf2.js)
+[pdkdf2 in javascript side](https://github.com/nodejs/node/blob/master/lib/internal/crypto/pbkdf2.js)
 
 ```js
 // These are C++ libraries
 const { PBKDF2Job, kCryptoJobAsync, kCryptoJobSync } =
   internalBinding("crypto");
 ```
+
+### How node js works
+
+1. Javascript Code We Write
+2. Node's Javascript Side
+   - (lib folder in Node repository)
+   1. process.binding -> internalBinding
+      - connects JS and C++ functions
+   2. V8
+      - Converts values between JS and C++ world
+3. Node's C++ Side
+   - (src folder in Node Repo)
+4. libuv
+   - Gives Node easy access to underlying OS
+
+### 6. Node Backed by C++!
+
+- [pdkdf2 in c++ side](https://github.com/nodejs/node/blob/master/src/node_crypto.cc)
+- [pdkdf2 in c++ side](https://github.com/nodejs/node/blob/master/src/crypto/crypto_scrypt.cc)
+  - `using v8::[]` This is where v8 engine comes in the play
+  - `uv_xxxx`: (libuv) concurrency and processing on c++ side
+
+### 8. The Node Event Loop
+
+- Node Program
+  - One Thread
+    - Event Loop
 
 </details>
