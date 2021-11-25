@@ -31,7 +31,7 @@ Node JS: Advanced Concepts by Stephen Grider
 2. Find where its implemented in the Node source code
 3. See how V8 and libuv are used to implement that function
 
-pdkdf2 Function
+pdkdf2 Function: asynchronous Password-Based Key Derivation Function 2 
 
 Function in Node's 'crypto' library
 
@@ -73,5 +73,10 @@ const { PBKDF2Job, kCryptoJobAsync, kCryptoJobSync } =
 - Node Program
   - One Thread
     - Event Loop
+
+### 11. Is Node Single Threaded?
+
+- Node *Event Loop* -> Single Threaded
+- Some of Node *Frameworks/Standard libraries* -> Not Single Threaded
 
 </details>
