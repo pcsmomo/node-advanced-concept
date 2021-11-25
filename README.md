@@ -25,4 +25,26 @@ Node JS: Advanced Concepts by Stephen Grider
    - crypto
    - path
 
+### 5. Module Implementations
+
+1. Pick a function in Node standard library
+2. Find where its implemented in the Node source code
+3. See how V8 and libuv are used to implement that function
+
+pdkdf2 Function
+
+Function in Node's 'crypto' library
+
+- github.com/nodejs/node
+  - lib: all javascript definitions
+  - src: c++ implementation
+
+[pdkdf2](https://github.com/nodejs/node/blob/master/lib/internal/crypto/pbkdf2.js)
+
+```js
+// These are C++ libraries
+const { PBKDF2Job, kCryptoJobAsync, kCryptoJobSync } =
+  internalBinding("crypto");
+```
+
 </details>
