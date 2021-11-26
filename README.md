@@ -142,4 +142,11 @@ Thread Pool (total 4 thread) -> OS Thread Scheduler -> 2 cores
 3. How does this threadpool stuff fit into the event loop
    - Tasks running in the threadpool are the 'pendingOperations' in our code example
 
+### 17. Explaining OS Operations
+
+```js
+// res is not a entire response. more complex and low level
+https.request('https://www.google.com', (res) => {});
+```
+
 </details>
