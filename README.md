@@ -159,4 +159,23 @@ No matter how many async request we send, it all will take similar time to finis
 
 That work is in the pendingOSTasks[], in event loop
 
+### 21. Crazy Node Behavior
+
+```sh
+node 21-multitask.js
+# HTTP: 428
+# Hash: 1367
+# FS: 1372
+# Hash: 1378
+# Hash: 1381
+# Hash: 1412
+```
+
+```sh
+# Without Hash
+node 21-multitask.js
+# FS: 23
+# HTTP: 329
+```
+
 </details>
