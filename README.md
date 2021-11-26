@@ -163,7 +163,7 @@ That work is in the pendingOSTasks[], in event loop
 
 ```sh
 node 21-multitask.js
-# HTTP: 428
+# HTTPS: 428
 # Hash: 1367
 # FS: 1372
 # Hash: 1378
@@ -175,7 +175,59 @@ node 21-multitask.js
 # Without Hash
 node 21-multitask.js
 # FS: 23
-# HTTP: 329
+# HTTPS: 329
+```
+
+### 22. Unexpected Event Loop Events
+
+- FS module - Threadpool
+- HTTPS - OS (outside of Threadpool)
+
+#### How fs works
+
+1. We call fs.readFile
+2. Node gets some 'stats' on the file (requires HD access)
+3. **HD accessed, stats returned**
+4. Node requests to read the file
+5. **HD accessed, file contents streamed back to app**
+6. Node returns file contents to us
+
+> It was about the number of Threadpool
+
+| Threadpool |   1    |   2    |   3    |     |
+| :--------: | :----: | :----: | :----: | :-: |
+|  Thread#1  |   FS   | Hash#4 | Hash#4 |     |
+|  Thread#2  | Hash#1 | Hash#1 |   FS   |     |
+|  Thread#3  | Hash#2 | Hash#2 | Hash#2 |     |
+|  Thread#4  | Hash#3 | Hash#3 | Hash#3 |     |
+|  waiting   | Hash#4 |   FS   |        |     |
+
+1. FS access HD to get stats
+2. while FS is wasting, Hash#4 got occupied to Thread#1
+   - and Hash#1 in Thread#2 finished and printed
+3. FS got in Thread#2 and finished its job (actually very quick)
+4. Hash#2, Hash#3, Hash#4 finished
+
+```sh
+# process.env.UV_THREADPOOL_SIZE = 5;
+node 21-multitask.js
+# FS: 50
+# HTTPS: 387
+# Hash-3: 1515
+# Hash-1: 1524
+# Hash-2: 1542
+# Hash-4: 1564
+```
+
+```sh
+# process.env.UV_THREADPOOL_SIZE = 1;
+node 21-multitask.js
+# HTTPS: 386
+# Hash-1: 678
+# Hash-2: 1322
+# Hash-3: 1968
+# Hash-4: 2609
+# FS: 2610
 ```
 
 </details>

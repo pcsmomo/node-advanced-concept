@@ -1,5 +1,7 @@
 // To see crazy node behaviour
 
+// process.env.UV_THREADPOOL_SIZE = 1;
+
 const https = require('https');
 const crypto = require('crypto');
 const fs = require('fs');
@@ -11,15 +13,15 @@ function doRequest() {
     .request('https://www.google.com', (res) => {
       res.on('data', () => {});
       res.on('end', () => {
-        console.log('HTTP:', Date.now() - start);
+        console.log('HTTPS:', Date.now() - start);
       });
     })
     .end();
 }
 
-function doHash() {
+function doHash(num) {
   crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
-    console.log('Hash:', Date.now() - start);
+    console.log(`Hash-${num}:`, Date.now() - start);
   });
 }
 
@@ -29,7 +31,7 @@ fs.readFile('21-multitask.js', 'utf8', () => {
   console.log('FS:', Date.now() - start);
 });
 
-doHash();
-doHash();
-doHash();
-doHash();
+doHash('1');
+doHash('2');
+doHash('3');
+doHash('4');
