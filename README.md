@@ -133,4 +133,13 @@ Thread Pool (total 4 thread) -> OS Thread Scheduler -> 2 cores
 |                 |   2: 1760   |             |             |
 |                 |   3: 1764   |             |             |
 
+### 16. Common Threadpool Questions
+
+1. Can we use the threadpool for javascript code or can only nodeJS functions use it?
+   - We can write custom JS that uses thread pool (We will see in a few lectures)
+2. What functions in node std library use the threadpool?
+   - all 'fs' module functions. Some crypto stuff. Depends on OS (windows vs unix based)
+3. How does this threadpool stuff fit into the event loop
+   - Tasks running in the threadpool are the 'pendingOperations' in our code example
+
 </details>
