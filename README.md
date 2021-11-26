@@ -114,4 +114,23 @@ Thread Pool (total 4 thread) -> OS Thread Scheduler -> 2 cores
 |                 |   4: 1485   |   7: 2949   |             |
 |                 |   3: 1493   |   8: 2954   |             |
 
+### 15. Changing Threadpool Size
+
+`process.env.UV_THREADPOOL_SIZE = 2;`
+
+| (2core/2thread) | 1 phase(ms) | 2 phase(ms) | 3 phase(ms) |
+| :-------------: | :---------: | :---------: | :---------: |
+|     5 works     |   2: 707    |   3: 1418   |   5: 2069   |
+|                 |   1: 733    |   4: 1433   |             |
+
+`process.env.UV_THREADPOOL_SIZE = 5;`
+
+| (2core/2thread) | 1 phase(ms) | 2 phase(ms) | 3 phase(ms) |
+| :-------------: | :---------: | :---------: | :---------: |
+|     5 works     |   4: 1746   |             |             |
+|                 |   1: 1759   |             |             |
+|                 |   5: 1759   |             |             |
+|                 |   2: 1760   |             |             |
+|                 |   3: 1764   |             |             |
+
 </details>
