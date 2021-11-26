@@ -153,6 +153,10 @@ https.request('https://www.google.com', (res) => {});
 
 No matter how many async request we send, it all will take similar time to finish.
 
--> Some function calls in the stadard library such as 'https' delicated to OS. They handle those async work
+-> Some function calls in the stadard library such as 'https' delicated to OS. They handle those async work \
+
+### 19. OS/Async Common Questions
+
+That work is in the pendingOSTasks[], in event loop
 
 </details>
