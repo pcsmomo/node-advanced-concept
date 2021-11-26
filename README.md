@@ -149,4 +149,10 @@ Thread Pool (total 4 thread) -> OS Thread Scheduler -> 2 cores
 https.request('https://www.google.com', (res) => {});
 ```
 
+### 18. Libuv OS Delegation
+
+No matter how many async request we send, it all will take similar time to finish.
+
+-> Some function calls in the stadard library such as 'https' delicated to OS. They handle those async work
+
 </details>
