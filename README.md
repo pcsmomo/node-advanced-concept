@@ -31,7 +31,7 @@ Node JS: Advanced Concepts by Stephen Grider
 2. Find where its implemented in the Node source code
 3. See how V8 and libuv are used to implement that function
 
-pdkdf2 Function: asynchronous Password-Based Key Derivation Function 2 
+pdkdf2 Function: asynchronous Password-Based Key Derivation Function 2
 
 Function in Node's 'crypto' library
 
@@ -44,7 +44,7 @@ Function in Node's 'crypto' library
 ```js
 // These are C++ libraries
 const { PBKDF2Job, kCryptoJobAsync, kCryptoJobSync } =
-  internalBinding("crypto");
+  internalBinding('crypto');
 ```
 
 ### How node js works
@@ -76,7 +76,42 @@ const { PBKDF2Job, kCryptoJobAsync, kCryptoJobSync } =
 
 ### 11. Is Node Single Threaded?
 
-- Node *Event Loop* -> Single Threaded
-- Some of Node *Frameworks/Standard libraries* -> Not Single Threaded
+- Node _Event Loop_ -> Single Threaded
+- Some of Node _Frameworks/Standard libraries_ -> Not Single Threaded
+
+### 13. The Libuv Thread Pool
+
+Libuv - Threadpool - 4 threads
+
+### 14. Threadpools with Multithreading
+
+With my laptop 2015 Macbook Pro which has dual core cpu
+
+Thread Pool (total 4 thread) -> OS Thread Scheduler -> 2 cores
+
+| (2core/4thread) | 1 phase(ms) | 2 phase(ms) | 3 phase(ms) |
+| :-------------: | :---------: | :---------: | :---------: |
+|     1 work      |   1: 641    |             |             |
+|     2 works     |   2: 679    |             |             |
+|                 |   1: 688    |             |             |
+|     3 works     |   3: 1109   |             |             |
+|                 |   2: 1139   |             |             |
+|                 |   1: 1154   |             |             |
+|     4 works     |   4: 1385   |             |             |
+|                 |   1: 1398   |             |             |
+|                 |   2: 1418   |             |             |
+|                 |   3: 1421   |             |             |
+|     5 works     |   4: 1384   |   5: 2096   |             |
+|                 |   1: 1432   |             |             |
+|                 |   3: 1442   |             |             |
+|                 |   2: 1448   |             |             |
+|     6 works     |   1: 1348   |   5: 2030   |             |
+|                 |   4: 1385   |   6: 2047   |             |
+|                 |   2: 1400   |             |             |
+|                 |   3: 1403   |             |             |
+|    10 works     |   1: 1475   |   5: 2938   |   9: 3651   |
+|                 |   2: 1485   |   6: 2944   |  10: 3657   |
+|                 |   4: 1485   |   7: 2949   |             |
+|                 |   3: 1493   |   8: 2954   |             |
 
 </details>
