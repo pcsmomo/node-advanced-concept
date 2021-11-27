@@ -278,4 +278,27 @@ cluster.fork();
 
 When it has several instances(?) and navigate a different path, the server will work parallelly
 
+### 29. Benchmarking Server Performance
+
+with one `cluster.fork();`
+
+```sh
+# In a new terminal tab, (macOS)
+# using ab (apache benchmark)
+# -c concurrency, -n requests
+ab -c 50 -n 500 localhost:3000/fast
+# Requests per second:    936.70 [#/sec] (mean)
+# Time per request:       53.379 [ms] (mean)
+# Percentage of the requests served within a certain time (ms)
+#   50%     49
+#   66%     53
+#   75%     55
+#   80%     56
+#   90%     59
+#   95%     61
+#   98%     64
+#   99%     64
+#  100%     65 (longest request)
+```
+
 </details>
