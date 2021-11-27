@@ -256,4 +256,15 @@ node index.js
 
 When trying to open localhost:3000 in two tabs, we takes 10s as the server is running doWork(5000) twice.
 
+### 28. Clustering in Action
+
+```js
+const cluster = require('cluster');
+console.log(cluster.isMaster);
+cluster.fork();
+```
+
+1. isMaster is true at the first.
+2. when `cluster.fork();` it will run index.js once again and this time `cluster.isMaster` is false
+
 </details>
