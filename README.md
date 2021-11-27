@@ -252,4 +252,8 @@ node index.js
 > nodemon doesn't work well with clustering \
 > So we won't use it
 
+### 25. Blocking the Event Loop
+
+When trying to open localhost:3000 in two tabs, we takes 10s as the server is running doWork(5000) twice.
+
 </details>
