@@ -1,3 +1,4 @@
+process.env.UV_THREADPOOL_SIZE = 1;
 const cluster = require('cluster');
 
 // console.log(cluster.isMaster);
@@ -14,16 +15,16 @@ if (cluster.isMaster) {
   // Im an child, Im going to act like a server and do nothing else
   console.log('Im a child');
   const express = require('express');
+  const crypto = require('crypto');
   const app = express();
 
-  function doWork(duration) {
-    const start = Date.now();
-    while (Date.now() - start < duration) {}
-  }
-
   app.get('/', (req, res) => {
-    doWork(5000); // Server cannot do any other thing for 5s
-    res.send('Hi there');
+    const start = Date.now();
+    // asynchronous Password-Based Key Derivation Function 2
+    crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
+      res.send('Hi there');
+      console.log('/ end, ', Date.now() - start);
+    });
   });
 
   app.get('/fast', (req, res) => {
