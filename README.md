@@ -267,4 +267,15 @@ cluster.fork();
 1. isMaster is true at the first.
 2. when `cluster.fork();` it will run index.js once again and this time `cluster.isMaster` is false
 
+### 29. Benchmarking Server Performance
+
+```js
+cluster.fork();
+cluster.fork();
+cluster.fork();
+cluster.fork();
+```
+
+When it has several instances(?) and navigate a different path, the server will work parallelly
+
 </details>
