@@ -311,10 +311,25 @@ ab -c 1 -n 1 localhost:3000/
 
 ab -c 2 -n 2 localhost:3000/
 # Time taken for tests:   1.301 seconds
+
+ab -c 6 -n 6 localhost:3000/
 ```
 
 > the most efficient way to set clusters is \
 > to match the number of of clusters and the number of the cpu core (physical or logical) \
 > if the clusters are more than your core count, it will give you a negative result
+
+### 32. PM2 Installation
+
+> In real life, we would not want to use these basic clustering.\
+> Rather want to use a bettern open source solution such as PM2
+
+- [PM2 - github](https://github.com/Unitech/pm2)
+- [PM2 Documents](https://pm2.keymetrics.io/docs/usage/quick-start/)
+- process manager for Node.js applications with a built-in load balancer
+
+```sh
+npm install -g pm2
+```
 
 </details>
