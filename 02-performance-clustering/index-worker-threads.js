@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
   const worker = new Worker(function () {
     this.onmessage = function () {
       let counter = 0;
-      // 1e9 = 10,000,000,000
+      // 1e9 = 1,000,000,000
       while (counter < 1e9) {
         counter++;
       }
@@ -15,8 +15,11 @@ app.get('/', (req, res) => {
     };
   });
 
-  worker.onmessage = function (myCounter) {
-    console.log(myCounter);
+  worker.onmessage = function (message) {
+    console.log(message.data);
+    // If we send "Number" type, res thinks it is a status code.
+    // So convert it to "String"
+    res.send('' + message.data);
   };
 
   worker.postMessage();

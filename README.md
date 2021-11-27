@@ -359,4 +359,20 @@ npm install --save webworker-threads
 # Failed to install webworker-threads@0.7.17 which was published 3 years ago
 ```
 
+### 36. Benchmarking Workers
+
+```sh
+node index-worker-threads.js
+ab -c 1 -n 1 localhost:3000/
+```
+
+```js
+worker.onmessage = function (message) {
+  console.log(message.data);
+  // If we send "Number" type, res thinks it is a status code.
+  // So convert it to "String"
+  res.send('' + message.data);
+};
+```
+
 </details>
