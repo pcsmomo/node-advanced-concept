@@ -332,4 +332,19 @@ ab -c 6 -n 6 localhost:3000/
 npm install -g pm2
 ```
 
+### 33. PM2 Configuration
+
+> PM2 is excellent for a production
+
+```sh
+# -i 0 : pm2 will figure it out how many clusters are better
+pm2 start index-pm2.js -i 0
+
+pm2 kill index-pm2
+pm2 list
+pm2 show index-pm2
+pm2 monit
+pm2 delete index-pm2
+```
+
 </details>
