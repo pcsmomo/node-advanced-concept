@@ -347,4 +347,16 @@ pm2 monit
 pm2 delete index-pm2
 ```
 
+### 34. Webworker Threads
+
+worker threads is still in the experimental stage \
+So use 'Cluster' mode
+
+[WebWorker Threads](https://www.npmjs.com/package/webworker-threads)
+
+```sh
+npm install --save webworker-threads
+# Failed to install webworker-threads@0.7.17 which was published 3 years ago
+```
+
 </details>
