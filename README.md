@@ -303,4 +303,18 @@ ab -c 50 -n 500 localhost:3000/fast
 #  100%     65 (longest request)
 ```
 
+### 31. Need More Children!
+
+```sh
+ab -c 1 -n 1 localhost:3000/
+# Time taken for tests:   0.676 seconds
+
+ab -c 2 -n 2 localhost:3000/
+# Time taken for tests:   1.301 seconds
+```
+
+> the most efficient way to set clusters is \
+> to match the number of of clusters and the number of the cpu core (physical or logical) \
+> if the clusters are more than your core count, it will give you a negative result
+
 </details>

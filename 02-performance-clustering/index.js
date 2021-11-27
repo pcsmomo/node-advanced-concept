@@ -2,12 +2,14 @@ process.env.UV_THREADPOOL_SIZE = 1;
 const cluster = require('cluster');
 
 // console.log(cluster.isMaster);
-
+const serverStart = Date.now();
 // Is the file being executed in master mode?
 if (cluster.isMaster) {
   // Cause index.js to be executed *again* but in child mode
   console.log('Im a master');
   cluster.fork();
+  cluster.fork();
+  // cluster.fork();
   // cluster.fork();
   // cluster.fork();
   // cluster.fork();
@@ -24,6 +26,7 @@ if (cluster.isMaster) {
     crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
       res.send('Hi there');
       console.log('/ end, ', Date.now() - start);
+      console.log('/ end from server start, ', Date.now() - serverStart);
     });
   });
 
