@@ -230,4 +230,26 @@ node 21-multitask.js
 # FS: 2610
 ```
 
+## Section 2 - Enhancing Node Performance
+
+### 23. Enhancing Performance
+
+Improving Node Performance
+
+1. Use Node in 'Cluster' Mode : Recommended
+2. Use Worker Threads : Experimental
+
+> Clustering kind of makes node works like it does multi-threading
+
+### 24. Express Setup
+
+```sh
+npm init -y
+npm install --save express
+node index.js
+```
+
+> nodemon doesn't work well with clustering \
+> So we won't use it
+
 </details>
