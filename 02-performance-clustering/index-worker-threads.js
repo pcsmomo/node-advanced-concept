@@ -1,13 +1,25 @@
 const express = require('express');
 const crypto = require('crypto');
 const app = express();
+const Worker = require('webworker-threads').Worker;
 
 app.get('/', (req, res) => {
-  const start = Date.now();
-  crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
-    res.send('Hi there');
-    console.log('/ end, ', Date.now() - start);
+  const worker = new Worker(function () {
+    this.onmessage = function () {
+      let counter = 0;
+      // 1e9 = 10,000,000,000
+      while (counter < 1e9) {
+        counter++;
+      }
+      postMessage(counter);
+    };
   });
+
+  worker.onmessage = function (myCounter) {
+    console.log(myCounter);
+  };
+
+  worker.postMessage();
 });
 
 app.get('/fast', (req, res) => {
