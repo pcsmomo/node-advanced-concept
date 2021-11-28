@@ -385,4 +385,20 @@ worker.onmessage = function (message) {
 - [Advanced Node Starter](https://github.com/StephenGrider/AdvancedNodeStarter)
 - [Advanced Node Compelte](https://github.com/StephenGrider/AdvancedNodeComplete)
 
+> I had a trouble with mongodb connection, but it turns out \
+> I didn't follow the instruction, Stephen wrote on
+
+1. mondo db
+   - the password should be the created user's password, not mongo atlas account
+   - database name should be `blog_dev`
+   - driver version is `2.2.12 or later`
+2. (optional) Google client ID and secret key
+   - It's optional because I can just use Stephen's credential
+   - But if I want to use mine,
+   - https://console.cloud.google.com/apis/credentials?authuser=1&project=typescript-study-300509
+     - Create Credentails
+     - OAuth client ID
+     - \*Add Authorized redirect URIs
+       - http://localhost:3000/auth/google/callback
+
 </details>
