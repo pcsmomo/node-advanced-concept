@@ -6,6 +6,8 @@ Node JS: Advanced Concepts by Stephen Grider
 
 - 03-project-setup
   - blog : main project
+- After that blog project is copied from the previous lecture
+  - and so is /config/dev.js as it is not included to git
 
 # Details
 
@@ -400,5 +402,14 @@ worker.onmessage = function (message) {
      - OAuth client ID
      - \*Add Authorized redirect URIs
        - http://localhost:3000/auth/google/callback
+
+## Section 4 - Data Caching with Redis
+
+### 43. MongoDB Query Performance
+
+- Usually \_id has its own index
+- But for the other keys, we need to create more indexes
+  - It takes resources e.g. it takes memory and it'd be slower when writing
+- So, the other solution for query performance is caching
 
 </details>
