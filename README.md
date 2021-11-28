@@ -442,4 +442,22 @@ node
 > client.get('hi', console.log)
 ```
 
+### 49. Redis Hashes
+
+```js
+{
+   'spanish': {
+      'red': 'rojo'
+   },
+   'german': {
+      'red': 'rot'
+   },
+}
+```
+
+```sh
+> client.hset('german', 'red', 'rot');
+> client.hget('german', 'red', console.log);
+```
+
 </details>
