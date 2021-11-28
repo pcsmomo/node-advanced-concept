@@ -4,6 +4,9 @@ Node JS: Advanced Concepts by Stephen Grider
 
 ## Folder structure
 
+- 03-project-setup
+  - blog : main project
+
 # Details
 
 <details open> 
@@ -146,7 +149,7 @@ Thread Pool (total 4 thread) -> OS Thread Scheduler -> 2 cores
 
 ```js
 // res is not a entire response. more complex and low level
-https.request('https://www.google.com', (res) => {});
+https.request('https://www.google.com', res => {});
 ```
 
 ### 18. Libuv OS Delegation
@@ -374,5 +377,12 @@ worker.onmessage = function (message) {
   res.send('' + message.data);
 };
 ```
+
+## Section 3 - Project Setup
+
+### 38. Project Walkthrough
+
+- [Advanced Node Starter](https://github.com/StephenGrider/AdvancedNodeStarter)
+- [Advanced Node Compelte](https://github.com/StephenGrider/AdvancedNodeComplete)
 
 </details>
