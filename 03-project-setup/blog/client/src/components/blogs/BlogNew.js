@@ -17,18 +17,12 @@ class BlogNew extends Component {
     }
 
     return (
-      <BlogForm
-        onBlogSubmit={() => this.setState({ showFormReview: true })}
-      />
+      <BlogForm onBlogSubmit={() => this.setState({ showFormReview: true })} />
     );
   }
 
   render() {
-    return (
-      <div>
-        {this.renderContent()}
-      </div>
-    );
+    return <div>{this.renderContent()}</div>;
   }
 }
 
