@@ -412,4 +412,34 @@ worker.onmessage = function (message) {
   - It takes resources e.g. it takes memory and it'd be slower when writing
 - So, the other solution for query performance is caching
 
+### 45. Redis Introduction
+
+[node-redix npm](https://www.npmjs.com/package/redis)
+
+### 46. Installing Redis on MacOS
+
+```sh
+brew install redis
+brew services restart redis
+
+# check if it works
+redis-cli ping
+# PONG
+```
+
+### 48. Getting and Setting Basic Values
+
+```sh
+# /blog
+node
+> const redis = require('redis')
+> const redisUrl = 'redis://127.0.0.1:6379'
+> const client = redis.createClient(redisUrl)
+> client
+> client.set('hi', 'there')
+> client.get('hi', (err, value) => console.log(value))
+# there
+> client.get('hi', console.log)
+```
+
 </details>
