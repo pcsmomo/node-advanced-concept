@@ -456,8 +456,22 @@ node
 ```
 
 ```sh
+node
 > client.hset('german', 'red', 'rot');
 > client.hget('german', 'red', console.log);
+```
+
+### 50. One Redis Gotcha
+
+Redis stores only 'String' or 'Number' types. Not objects.
+
+```sh
+node
+> client.set('colors', JSON.stringify({ red: 'rojo' }));
+> client.get('colors', console.log);
+# null '{"red":"rojo"}'    # String
+> client.get('colors', (err, val) => console.log(JSON.parse(val))));
+# { red: 'rojo' }          # Object
 ```
 
 </details>
