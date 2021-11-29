@@ -492,4 +492,11 @@ client.get = util.promisify(client.get);
 const cachedBlogs = await client.get(req.user.id);
 ```
 
+### 53. Caching in Action
+
+```sh
+node
+client.flushall()
+```
+
 </details>
