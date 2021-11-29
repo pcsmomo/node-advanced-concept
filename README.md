@@ -476,6 +476,8 @@ node
 
 ### 52. Promisifying a Function
 
+[node util.promisify(original)](https://nodejs.org/api/util.html#utilpromisifyoriginal)
+
 ```js
 // Redis initialising
 const redis = require('redis');
@@ -497,6 +499,71 @@ const cachedBlogs = await client.get(req.user.id);
 ```sh
 node
 client.flushall()
+```
+
+### 55. The Ultimate Caching Solution
+
+[Customising Query - mongoose Doc](https://mongoosejs.com/docs/queries.html)
+
+1. Caching code isn't easily reusable anywhere else in our codebase
+   - Hook in to Mongooses's query generation and execution process
+
+```js
+// Using query builder
+const query Person.
+  find({ occupation: /host/ }).
+  where('name.last').equals('Ghost').
+  where('age').gt(17).lt(66).
+  where('likes').in(['vaporizing', 'talking']).
+  limit(10).
+  sort('-occupation').
+  select('name occupation');
+
+// Check to see if this query has already been fetched in redis
+query.exec(callback);
+// Same as...
+// Behind the scene, it use .exec()
+query.then(result => console.log(result))
+// Same as...
+const result = await query;
+```
+
+```js
+// Hijack exec() for caching
+query.exec = function () {
+  // to check to see if this query has already been executed
+  // and if it has return the result right away
+  const result = client.get('query key');
+  if (result) {
+    return result;
+  }
+
+  // otherwise issue the query *as normal*
+  const result = runTheOriginalExecFunction();
+
+  // then save that value in redis
+  client.set('query key', result);
+
+  return result;
+};
+```
+
+2. Cached values never expired
+   - Add timeout to values assigned to redis. Also add ability to reset all values tied to some specific event
+
+```sh
+node
+# expired after 5 seconds
+client.set('color', 'red', 'EX', 5)
+```
+
+3. Cache keys won't work when we introduce other collections or query options
+   - Figure out a more robust solution for generating cache keys
+
+[query.getOptions() - DOC](https://mongoosejs.com/docs/api.html#query_Query-getOptions)
+
+```sh
+query.getOptions();
 ```
 
 </details>
