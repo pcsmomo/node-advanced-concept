@@ -566,4 +566,36 @@ client.set('color', 'red', 'EX', 5)
 query.getOptions();
 ```
 
+### 56. Patching Mongoose's Exec
+
+All queries creates new Query \
+`Blog.find({ _user: req.user.id });`
+
+[mongoose query - Github](https://github.com/Automattic/mongoose/blob/master/lib/query.js)
+
+```js
+// [In the](https://github.com/Automattic/mongoose/blob/master/lib/query.js)
+Query.prototype = new mquery();
+Query.prototype.constructor = Query;
+Query.base = mquery.prototype;
+
+Query.prototype.toConstructor = function toConstructor() {};
+
+Query.prototype.find = function (conditions, callback) {};
+
+Query.prototype.exec = function exec(op, callback) {};
+```
+
+```js
+// Patching the original exec()
+const mongoose = require('mongoose');
+const exec = mongoose.Query.prototype.exec;
+
+// use function keyword, not arrow function for `this` behaviour
+mongoose.Query.prototype.exec = function () {
+  console.log('IM ABOUT TO RUN A QUERY');
+  return exec.apply(this, arguments);
+};
+```
+
 </details>
