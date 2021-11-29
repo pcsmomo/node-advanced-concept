@@ -474,4 +474,22 @@ node
 # { red: 'rojo' }          # Object
 ```
 
+### 52. Promisifying a Function
+
+```js
+// Redis initialising
+const redis = require('redis');
+const redisUrl = 'redis://127.0.0.1:6379';
+const client = redis.createClient(redisUrl);
+
+// node standard library
+const util = require('util');
+// promisiy: call back to return Promise
+client.get = util.promisify(client.get);
+
+// Are these different?
+// const cachedBlogs = client.get(req.user.id, (err, reply) => reply);
+const cachedBlogs = await client.get(req.user.id);
+```
+
 </details>
