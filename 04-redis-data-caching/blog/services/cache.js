@@ -21,10 +21,16 @@ mongoose.Query.prototype.exec = async function () {
 
   // If we do, return that
   if (cachedValue) {
-    console.log(cachedValue);
+    console.log(`${this.mongooseCollection.name} - SERVING FROM CACHE`);
+    // console.log(cachedValue);
+    return JSON.parse(cachedValue);
   }
 
   // Otherwise, issue the query and store the result in redis
   const result = await exec.apply(this, arguments);
-  console.log(result);
+
+  console.log(`${this.mongooseCollection.name} - SERVING FROM MONGODB`);
+  client.set(key, JSON.stringify(result));
+
+  return result;
 };
