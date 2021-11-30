@@ -24,9 +24,11 @@ mongoose.Query.prototype.exec = async function () {
     console.log(`${this.mongooseCollection.name} - SERVING FROM CACHE`);
 
     // console.log(this);
-    const doc = new this.model(JSON.parse(cachedValue));
+    const doc = JSON.parse(cachedValue);
 
-    return doc;
+    return Array.isArray(doc)
+      ? doc.map(d => new this.model(d)) // Hidrating Arrays
+      : new this.model(doc); // Hydrating Object
   }
 
   // Otherwise, issue the query and store the result in redis
