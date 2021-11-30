@@ -20,4 +20,11 @@ Node JS: Advanced Concepts by Stephen Grider
 
 ### 71. Testing Flow
 
+We will focus on "Integration Testing" \
+Especially E2E (End to End), Automation testing
+
+- Jest
+- Chromium : "headless" version
+  - Which is already included in node.js
+
 </details>
