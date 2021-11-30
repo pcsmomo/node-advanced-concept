@@ -9,16 +9,22 @@ client.get = util.promisify(client.get);
 const exec = mongoose.Query.prototype.exec;
 
 // use function keyword, not arrow function for `this` behaviour
-mongoose.Query.prototype.exec = function () {
-  console.log('IM ABOUT TO RUN A QUERY');
+mongoose.Query.prototype.exec = async function () {
+  const key = JSON.stringify(
+    Object.assign({}, this.getQuery(), {
+      collection: this.mongooseCollection.name
+    })
+  );
 
-  // console.log(this.getQuery());
-  // console.log(this.mongooseCollection.name);
-  const key = Object.assign({}, this.getQuery(), {
-    collection: this.mongooseCollection.name
-  });
+  // See if we have a value for 'key' in redis
+  const cachedValue = await client.get(key);
 
-  console.log(key);
+  // If we do, return that
+  if (cachedValue) {
+    console.log(cachedValue);
+  }
 
-  return exec.apply(this, arguments);
+  // Otherwise, issue the query and store the result in redis
+  const result = await exec.apply(this, arguments);
+  console.log(result);
 };
