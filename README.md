@@ -598,4 +598,8 @@ mongoose.Query.prototype.exec = function () {
 };
 ```
 
+### 67. Forced Cache Expiration
+
+set redis key for a specific user, so the cache for 'users' and 'blogs' can be expired together
+
 </details>

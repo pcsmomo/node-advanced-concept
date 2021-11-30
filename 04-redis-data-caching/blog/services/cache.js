@@ -4,12 +4,16 @@ const util = require('util');
 
 const redisUrl = 'redis://127.0.0.1:6379';
 const client = redis.createClient(redisUrl);
-client.get = util.promisify(client.get);
+// client.get = util.promisify(client.get);
+client.hget = util.promisify(client.hget);
 const exec = mongoose.Query.prototype.exec;
 
-mongoose.Query.prototype.cache = function () {
+mongoose.Query.prototype.cache = function (options = {}) {
   // this._cache = true;  // either is fine
   this.useCache = true;
+  // _hashKeyToUse  // any name is fine
+  this.hashKey = JSON.stringify(options.key || '');
+
   return this;
 };
 
@@ -26,7 +30,8 @@ mongoose.Query.prototype.exec = async function () {
   );
 
   // See if we have a value for 'key' in redis
-  const cachedValue = await client.get(key);
+  // const cachedValue = await client.get(key);
+  const cachedValue = await client.hget(this.hashKey, key);
 
   // If we do, return that
   if (cachedValue) {
@@ -44,7 +49,8 @@ mongoose.Query.prototype.exec = async function () {
   const result = await exec.apply(this, arguments);
 
   console.log(`${this.mongooseCollection.name} - SERVING FROM MONGODB`);
-  client.set(key, JSON.stringify(result), 'EX', 10);
+  // client.set(key, JSON.stringify(result), 'EX', 10);
+  client.hset(this.hashKey, key, JSON.stringify(result), 'EX', 10);
 
   return result;
 };
