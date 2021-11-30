@@ -22,8 +22,11 @@ mongoose.Query.prototype.exec = async function () {
   // If we do, return that
   if (cachedValue) {
     console.log(`${this.mongooseCollection.name} - SERVING FROM CACHE`);
-    // console.log(cachedValue);
-    return JSON.parse(cachedValue);
+
+    // console.log(this);
+    const doc = new this.model(JSON.parse(cachedValue));
+
+    return doc;
   }
 
   // Otherwise, issue the query and store the result in redis
