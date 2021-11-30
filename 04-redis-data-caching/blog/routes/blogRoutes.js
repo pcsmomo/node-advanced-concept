@@ -14,11 +14,11 @@ module.exports = app => {
   });
 
   app.get('/api/blogs', requireLogin, async (req, res) => {
-    const blogs = await Blog.find({ _user: req.user.id });
+    const blogs = await Blog.find({ _user: req.user.id }).cache();
 
     res.send(blogs);
 
-    // ** Code - only using caching
+    // ** Code - only using caching - this code is moved to services/cache.js
     // const redis = require('redis');
     // const redisUrl = 'redis://127.0.0.1:6379';
     // const client = redis.createClient(redisUrl);
