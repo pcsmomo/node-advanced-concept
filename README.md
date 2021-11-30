@@ -42,4 +42,10 @@ Especially E2E (End to End), Automation testing
 npm test
 ```
 
+### 75. Launching Chromium Instances
+
+1. Pepperteer: Start up Chromium
+2. Browser: Represents an open browser window
+3. Page: Represents one individual tab
+
 </details>
