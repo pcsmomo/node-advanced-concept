@@ -98,4 +98,11 @@ Google OAuth will consider these suspicious and get us CAPTCHA \
    - Let's try it!
    - It will work with any OAuth services, not only Google
 
+### 85. The Google OAuth Flow
+
+We will hook up these parts to our Chromium
+
+- Server sets cookie on users browser that identifies them
+- All feature requests include cookie data just identifies this user
+
 </details>
