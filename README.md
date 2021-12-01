@@ -124,6 +124,15 @@ Buffer.from(session, 'base64').toString('utf8');
 # The same user id in my mongodb
 ```
 
+[safe-buffer npm](https://www.npmjs.com/package/safe-buffer)
+
 So that 'session' value inside cookie is the key
+
+### 87. Sessions From Another Angle
+
+1. Create Page instance
+2. Take an existing user ID and generate a fake session object with it
+3. Sign in the sesion object with keygrip
+4. Set the session and signature on our Page instance as cookies
 
 </details>
