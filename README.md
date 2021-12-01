@@ -74,4 +74,16 @@ await page.$eval('a.brand-logo', el => el.innerHTML);
 - page.click()
 - page.url()
 
+### 82. Asserting URL Domain
+
+[Jest expect.toMatch](https://jestjs.io/docs/expect#tomatchregexp--string)
+
+### 83. Issues with OAuth
+
+Google OAuth will consider these suspicious and get us CAPTCHA \
+(Completely Automated Public Turing test to tell Computers and Humans Apart)
+
+1. Chromium - never accessed it before and there will be many different Chromium instances
+2. CI/CD testing
+
 </details>
