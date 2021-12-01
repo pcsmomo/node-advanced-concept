@@ -54,4 +54,17 @@ npm test
 
 Pepperteer, Browser, Page all works asynchronously
 
+### 78. Puppeteer - Behind the Scenes
+
+Jest - |different world| - Chromium
+
+So the communication between Jest and Chromium is only with plain strings.\
+and there serialising step behind the scenes
+
+```js
+await page.$eval('a.brand-logo', el => el.innerHTML);
+```
+
+`el => el.innerHTML` will be send as plain string, not as a function
+
 </details>
