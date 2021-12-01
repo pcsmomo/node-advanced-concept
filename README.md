@@ -67,4 +67,11 @@ await page.$eval('a.brand-logo', el => el.innerHTML);
 
 `el => el.innerHTML` will be send as plain string, not as a function
 
+### 81. Asserting OAuth Flow
+
+[puppeteer DOC](https://github.com/puppeteer/puppeteer/blob/v12.0.1/docs/api.md)
+
+- page.click()
+- page.url()
+
 </details>
