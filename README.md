@@ -105,4 +105,25 @@ We will hook up these parts to our Chromium
 - Server sets cookie on users browser that identifies them
 - All feature requests include cookie data just identifies this user
 
+### 86. Inner Workings of Sessions
+
+See devTool, network tab when login via google OAuth
+
+1. http://localhost:3000/auth/google/callback?code=4%2F0AX4XfWgZgpf507bO2vp94KzYgUW7Uq-ihvqhMk1y4GtNYzwKUKFyXKCQbjGMRdohJ7LvRQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=consent
+   - Response Headers
+     - set-cookies: session=eyJwYXNzcG9ydCI6eyJ1c2VyIjoiNjFhMzBmODkwMmVjNjMxYzA0NDZkMmU4In19; path=/; expires=Fri, 31 Dec 2021 20:09:05 GMT; httponly
+     - set-cookies: session.sig=rHFEnnjJKe99pKyfbp1p6THMsGs; path=/; expires=Fri, 31 Dec 2021 20:09:05 GMT; httponly
+
+```sh
+# blog
+node
+const session = 'eyJwYXNzcG9ydCI6eyJ1c2VyIjoiNjFhMzBmODkwMmVjNjMxYzA0NDZkMmU4In19'
+const Buffer = require('safe-buffer').Buffer;
+Buffer.from(session, 'base64').toString('utf8');
+# '{"passport":{"user":"61a30f8902ec631c0446d2e8"}}'
+# The same user id in my mongodb
+```
+
+So that 'session' value inside cookie is the key
+
 </details>
