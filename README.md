@@ -86,4 +86,16 @@ Google OAuth will consider these suspicious and get us CAPTCHA \
 1. Chromium - never accessed it before and there will be many different Chromium instances
 2. CI/CD testing
 
+### 84. Solving Authentication Issues with Automation Testing
+
+1. Make a secret route on the server that automatically logs in our Chromium browser
+   - Bad practice to change our server code just to make our test suite work
+2. When tests are running, don't require authentication of any kind
+   - Server is running 100% separately from test suite. We can't easily change the server only when tests are running
+3. Google might provide some fake accounts for testing
+   - It works only for Google OAuth
+4. \*Somehow convince our server that the Chromiun browser is logged into the app by faking a session
+   - Let's try it!
+   - It will work with any OAuth services, not only Google
+
 </details>
