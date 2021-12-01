@@ -135,4 +135,32 @@ So that 'session' value inside cookie is the key
 3. Sign in the sesion object with keygrip
 4. Set the session and signature on our Page instance as cookies
 
+### 88. Session Signatures
+
+#### Session signature
+
+session.sig : Session Signature
+
+- Base64 Session + Cookie Signing Key = Session Signature
+- Base64 Session = Cookie Signing Key + Session Signature
+
+Our cookie key for development is located in config/dev.js
+
+#### keygrip
+
+[keygrip npm](https://www.npmjs.com/package/keygrip)
+
+```sh
+node
+const session = 'eyJwYXNzcG9ydCI6eyJ1c2VyIjoiNjFhMzBmODkwMmVjNjMxYzA0NDZkMmU4In19';
+const Keygrip = require('keygrip');
+const keygrip = new Keygrip(['123123123111']);
+keygrip.sign('session=' + session);
+# rHFEnnjJKe99pKyfbp1p6THMsGs
+# Exactly the same signature as we get from the browser
+# keygrip.sign('asacvjkzxcvlakf' + session);
+keygrip.verify('session=' + session, 'rHFEnnjJKe99pKyfbp1p6THMsGs')
+# true
+```
+
 </details>
