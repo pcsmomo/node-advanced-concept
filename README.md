@@ -50,4 +50,8 @@ npm test
 2. Browser: Represents an open browser window
 3. Page: Represents one individual tab
 
+### 77. Extracting Page Content
+
+Pepperteer, Browser, Page all works asynchronously
+
 </details>
