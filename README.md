@@ -121,7 +121,7 @@ const session = 'eyJwYXNzcG9ydCI6eyJ1c2VyIjoiNjFhMzBmODkwMmVjNjMxYzA0NDZkMmU4In1
 const Buffer = require('safe-buffer').Buffer;
 Buffer.from(session, 'base64').toString('utf8');
 # '{"passport":{"user":"61a30f8902ec631c0446d2e8"}}'
-# The same user id in my mongodb
+# The same user id(=mongodb id, not google id) in my mongodb
 ```
 
 [safe-buffer npm](https://www.npmjs.com/package/safe-buffer)
