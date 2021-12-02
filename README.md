@@ -205,7 +205,7 @@ mongoose.Promise = global.Promise;
 
 We could use the same approach as same as our caching section\
 But we're in an advanced course, so we will use a clever and more fun way\
-with ES2015 syntax
+with ES2015 syntax, `Proxy`
 
 ### 99. Extending Page
 
@@ -246,5 +246,9 @@ const customPage = new CustomPage(page);
 customPage.login();
 customPage.page.goto();
 ```
+
+### 100. Introduction to Proxies
+
+[Proxy - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
 </details>
