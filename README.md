@@ -199,4 +199,11 @@ mongoose.Promise = global.Promise;
 
 [Configuring Jest - DOC](https://jestjs.io/docs/configuration)
 
+### 98. Adding a Login Method
+
+[Page.ts Peppeteer - Github](https://github.com/puppeteer/puppeteer/blob/v12.0.1/src/common/Page.ts#L417)
+
+We could use the same approach as same as our caching section\
+But we're in an advanced course, so we will use a clever and more fun way
+
 </details>

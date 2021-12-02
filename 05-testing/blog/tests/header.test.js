@@ -31,7 +31,6 @@ test('clicking login starts oauth flow', async () => {
 });
 
 test('When signed in, shows logout button', async () => {
-  // const id = '61a30f8902ec631c0446d2e8'; // mongodb user id
   const user = await userFactory();
   const { session, sig } = sessionFactory(user);
 
