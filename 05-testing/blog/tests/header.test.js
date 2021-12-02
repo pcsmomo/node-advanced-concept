@@ -11,7 +11,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  // await browser.close();
+  await browser.close();
 });
 
 test('the header has the correct text', async () => {
@@ -52,4 +52,10 @@ test.only('When signed in, shows logout button', async () => {
   await page.setCookie({ name: 'session.sig', value: sig });
 
   await page.goto('localhost:3000');
+  await page.waitFor('a[href="/auth/logout"]'); // if test fails, it will hang here. waiting the logouts
+
+  // it's a kinda toughest part.
+  // without waitFor() the page has not been completely loaded yet.
+  const text = await page.$eval('a[href="/auth/logout"]', el => el.innerHTML);
+  expect(text).toEqual('Logout');
 });
