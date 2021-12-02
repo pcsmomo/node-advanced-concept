@@ -163,4 +163,11 @@ keygrip.verify('session=' + session, 'rHFEnnjJKe99pKyfbp1p6THMsGs')
 # true
 ```
 
+### 92. Factory Functions
+
+- Session Factory
+- User Factory
+
+When we call it, it automately assembles some data and returns immediately
+
 </details>

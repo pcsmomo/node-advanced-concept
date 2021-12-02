@@ -28,7 +28,7 @@ test('clicking login starts oauth flow', async () => {
   expect(url).toMatch(/accounts\.google\.com/);
 });
 
-test.only('When signed in, shows logout button', async () => {
+test('When signed in, shows logout button', async () => {
   const id = '61a30f8902ec631c0446d2e8'; // mongodb user id
 
   // get session
