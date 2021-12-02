@@ -209,46 +209,50 @@ with ES2015 syntax, `Proxy`
 
 ### 99. Extending Page
 
-```js
-console.clear();
-
-class Page {
-  goto() {
-    console.log('Im going to another page');
-  }
-  setCookie() {
-    console.log('Im setting a cookie');
-  }
-}
-
-// X, we cannot easily tell peppeteer to use CustomPage instead of Page
-class CustomPage extends Page {
-  login() {
-    console.log('All of our login logic');
-  }
-}
-
-// X, Merit way but there would be a better way
-class CustomPage {
-  constructor(page) {
-    this.page = page;
-  }
-
-  login() {
-    this.page.goto('localhost:3000');
-    this.page.setCookie();
-  }
-}
-
-// const page = browser.launch();
-const page = new Page();
-const customPage = new CustomPage(page);
-customPage.login();
-customPage.page.goto();
-```
+[99-extending-page.js](05-testing/examples/99-extending-page.js)
 
 ### 100. Introduction to Proxies
 
 [Proxy - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+### 101. Proxies in Action
+
+```js
+// O, yup, this way with Proxy!
+console.clear();
+
+class Greetings {
+  english() {
+    return 'Hello';
+  }
+  spanish() {
+    return 'Hola';
+  }
+}
+
+class MoreGreetings {
+  german() {
+    return 'Hallo';
+  }
+  french() {
+    return 'Bonjour';
+  }
+}
+
+const greetings = new Greetings();
+const moreGreetings = new MoreGreetings();
+
+const allGreetings = new Proxy(greetings, {
+  // target: greetings
+  // property: string name of the property we try to access
+  get: function (target, property) {
+    return target[property] || moreGreetings[property];
+    // return page[property] || customPage[property];
+  }
+});
+
+console.log(allGreetings.french());
+console.log(allGreetings.english());
+```
 
 </details>
