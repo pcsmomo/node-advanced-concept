@@ -11,7 +11,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await browser.close();
+  // await browser.close();
 });
 
 test('the header has the correct text', async () => {
@@ -48,5 +48,8 @@ test.only('When signed in, shows logout button', async () => {
   const keygrip = new Keygrip([keys.cookieKey]);
   const sig = keygrip.sign('session=' + sessionString); // 'session=' is from the library rule
 
-  console.log(sessionString, sig);
+  await page.setCookie({ name: 'session', value: sessionString });
+  await page.setCookie({ name: 'session.sig', value: sig });
+
+  await page.goto('localhost:3000');
 });
