@@ -170,4 +170,13 @@ keygrip.verify('session=' + session, 'rHFEnnjJKe99pKyfbp1p6THMsGs')
 
 When we call it, it automately assembles some data and returns immediately
 
+### 93. The Session Factory
+
+```js
+// mongoose id is actually an object
+passport: {
+  user: user._id.toString();
+}
+```
+
 </details>
