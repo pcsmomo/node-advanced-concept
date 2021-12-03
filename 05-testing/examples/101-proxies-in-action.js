@@ -22,12 +22,12 @@ class MoreGreetings {
 const greetings = new Greetings();
 const moreGreetings = new MoreGreetings();
 
-const allGreetings = new Proxy(greetings, {
+const allGreetings = new Proxy(moreGreetings, {
   // target: moreGreetings
   // property: string name of the property we try to access
   get: function (target, property) {
     // console.log(property);
-    return target[property] || moreGreetings[property];
+    return target[property] || greetings[property];
     // return page[property] || customPage[property];
   }
 });
