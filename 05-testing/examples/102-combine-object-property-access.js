@@ -16,8 +16,21 @@ class Page {
 //   }
 // }
 
-// X, Merit way but there would be a better way
+// O, using Proxy. The Best Way!
 class CustomPage {
+  static build() {
+    const page = new Page();
+    const customPage = new CustomPage(page);
+
+    const superPage = new Proxy(customPage, {
+      get: function (target, property) {
+        return target[property] || page[property];
+      }
+    });
+
+    return superPage;
+  }
+
   constructor(page) {
     this.page = page;
   }
@@ -29,21 +42,8 @@ class CustomPage {
   }
 }
 
-const buildPage = () => {
-  const page = new Page();
-  const customPage = new CustomPage(page);
+const superPage = CustomPage.build();
 
-  const superPage = new Proxy(customPage, {
-    get: function (target, property) {
-      return target[property] || page[property];
-    }
-  });
-
-  // superPage.goto();
-  // superPage.setCookie();
-  // superPage.login();
-
-  return superPage;
-};
-
-buildPage();
+superPage.goto();
+superPage.setCookie();
+superPage.login();
