@@ -32,6 +32,10 @@ class CustomPage {
     await this.page.goto('localhost:3000');
     await this.page.waitFor('a[href="/auth/logout"]'); // if test fails, it will hang here. waiting the logouts
   }
+
+  async getContentsOf(selector) {
+    return this.page.$eval(selector, el => el.innerHTML);
+  }
 }
 
 module.exports = CustomPage;

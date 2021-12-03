@@ -12,7 +12,8 @@ afterEach(async () => {
 });
 
 test('the header has the correct text', async () => {
-  const text = await page.$eval('a.brand-logo', el => el.innerHTML);
+  // const text = await page.$eval('a.brand-logo', el => el.innerHTML);
+  const text = await page.getContentsOf('a.brand-logo');
 
   expect(text).toEqual('Blogster');
 });
@@ -30,7 +31,7 @@ test('When signed in, shows logout button', async () => {
 
   // it's a kinda toughest part.
   // without waitFor() the page has not been completely loaded yet.
-  const text = await page.$eval('a[href="/auth/logout"]', el => el.innerHTML);
+  const text = await page.getContentsOf('a[href="/auth/logout"]');
 
   expect(text).toEqual('Logout');
 });
