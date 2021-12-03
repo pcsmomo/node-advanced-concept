@@ -264,4 +264,12 @@ npm test
 The window didn't close\
 because browser and page both have close()
 
+### 111. Test Timeout
+
+Timeout - Async callback was not invoked within the 5000ms timeout specified by jest.setTimeout.
+
+```js
+jest.setTimeout(30000);
+```
+
 </details>
