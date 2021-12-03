@@ -28,9 +28,5 @@ class CustomPage {
   }
 }
 
-// const page = browser.launch();
 const page = new Page();
 const customPage = new CustomPage(page);
-customPage.login();
-customPage.page.goto();
-customPage.page.setCookie();
