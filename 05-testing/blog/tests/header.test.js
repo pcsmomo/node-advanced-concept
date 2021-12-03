@@ -1,6 +1,4 @@
 const Page = require('./helpers/page');
-const sessionFactory = require('./factories/sessionFactory');
-const userFactory = require('./factories/userFactory');
 
 let page;
 
@@ -28,17 +26,11 @@ test('clicking login starts oauth flow', async () => {
 });
 
 test('When signed in, shows logout button', async () => {
-  const user = await userFactory();
-  const { session, sig } = sessionFactory(user);
-
-  await page.setCookie({ name: 'session', value: session });
-  await page.setCookie({ name: 'session.sig', value: sig });
-
-  await page.goto('localhost:3000');
-  await page.waitFor('a[href="/auth/logout"]'); // if test fails, it will hang here. waiting the logouts
+  await page.login();
 
   // it's a kinda toughest part.
   // without waitFor() the page has not been completely loaded yet.
   const text = await page.$eval('a[href="/auth/logout"]', el => el.innerHTML);
+
   expect(text).toEqual('Logout');
 });
