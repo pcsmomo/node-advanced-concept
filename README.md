@@ -255,4 +255,13 @@ console.log(allGreetings.french());
 console.log(allGreetings.english());
 ```
 
+```sh
+npm test
+```
+
+### 105. Function Lookup Priority
+
+The window didn't close\
+because browser and page both have close()
+
 </details>
