@@ -338,8 +338,15 @@ CI Flow
 1. Developer pushes code to github
 2. CI Server detects that a new push of code has occured
 3. CI Server clones project to a cloud-based virtual machine
-4. CI Server runs all tests
+4. CI Server runs all tests (using a `.travis.yml`)
 5. if all tests pass, CI Server marks build as 'passing' and does some optional followup
 6. (option) Send an email, automatically deploy, put notification on Github, etc...
+
+### 125. CI Providers
+
+- [Travis CI](https://travis-ci.org/)
+- Circle CI
+- Codeship
+- AWS Codebuild
 
 </details>
