@@ -406,4 +406,13 @@ Set up for MongDB, Express API and Redis Server
 - [Setting up MongoDB - DOC](https://docs.travis-ci.com/user/database-setup/#mongodb)
 - [Setting up Redis - DOC](https://docs.travis-ci.com/user/database-setup/#redis)
 
+### 132. More Server Configuration
+
+1. Add ci.js key file
+2. Fix redix URL in services/cache.js
+3. Add redis URL to dev.js and ci.js
+4. Add mongoDB URI to ci.js
+5. Make sure server starts on port 3000 in CI mode
+6. Make sure server serves react client files in CI mode
+
 </details>
