@@ -372,4 +372,11 @@ countToTwo:
 }
 ```
 
+### 127. Travis YAML Setup
+
+[Travis CI Documentation](https://docs.travis-ci.com)
+[Travis CI API - DOC](https://docs.travis-ci.com/api)
+
+trusty: a very specific version of linux (very small and suitable for small app)
+
 </details>
