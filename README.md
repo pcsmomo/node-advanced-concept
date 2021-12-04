@@ -209,7 +209,7 @@ with ES2015 syntax, `Proxy`
 
 ### 99. Extending Page
 
-[99-extending-page.js](05-testing/examples/99-extending-page.js)
+[example 99-extending-page.js](05-testing/examples/99-extending-page.js)
 
 ### 100. Introduction to Proxies
 
@@ -259,6 +259,10 @@ console.log(allGreetings.english());
 npm test
 ```
 
+### 102. Combining Object Property Access
+
+[example 102-combine-object-property-access.js](05-testing/examples/102-combine-object-property-access.js)
+
 ### 105. Function Lookup Priority
 
 The window didn't close\
@@ -289,5 +293,11 @@ await page.waitFor('.card'); // we should wait when navigating to the other page
 "jest": "^22.1.4", -> "27.4.3"
 "puppeteer": "^1.0.0" -> "12.0.1",
 ```
+
+### 118. Direct API Requests
+
+- [example 118-direct-api-requests.js](./05-testing/examples/118-direct-api-requests.js)
+  - Test this script on the browser, both logged in and loggin out
+- [fetch() options - MDN](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
 
 </details>
