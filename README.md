@@ -426,4 +426,10 @@ const browser = await puppeteer.launch({
 });
 ```
 
+### 135. Git Repo Setup
+
+1. Create github repository, `blog-node-ci`
+2. Set github uri
+   - `git remote add origin git@github.com:pcsmomo/blog-node-ci.git`
+
 </details>
