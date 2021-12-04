@@ -440,4 +440,30 @@ Um... travis-ci.org -> travis-ci.com
    - it automatically connected my github account
 2. Activate my repository, `blog-node-ci`
 
+### 137. Triggering CI Builds
+
+```sh
+git add -A
+git commit -m"travis config"
+git push
+```
+
+Navigate travis-ci.com, we can see the pushed commit is processing
+
+### 138. Build Success
+
+All pased!!
+
+```sh
+Ran all test suites.
+The command "npm run test" exited with 0.
+store build cache     cache.2
+
+Done. Your build exited with 0.
+/home/travis/.travis/functions: line 536:  6084 Terminated              nohup npm run start
+
+# Ran for 7 min 48 sec
+# Caching takes the longest time
+```
+
 </details>
