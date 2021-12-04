@@ -457,6 +457,7 @@ All pased!!
 ```sh
 Ran all test suites.
 The command "npm run test" exited with 0.
+
 store build cache     cache.2
 
 Done. Your build exited with 0.
@@ -465,5 +466,14 @@ Done. Your build exited with 0.
 # Ran for 7 min 48 sec
 # Caching takes the longest time
 ```
+
+## Section 7 - Scalable Image/File Upload
+
+### 140. Big Issues Around Image Upload
+
+1. Where do images get physically stored?
+   1. in MongoDB(cloud): too expensive for storing images (bad approach)
+2. How do images _get_ to the place they should be stored?
+3. How do we relate images to a particular blog post?
 
 </details>
