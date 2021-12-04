@@ -351,14 +351,14 @@ CI Flow
 
 ### 126. The Basics of YAML Files
 
-```
+```yaml
 # .yaml
 languagesIKnow:
-    english: 'very well'
-    spanish: 'kindof'
+  english: 'very well'
+  spanish: 'kindof'
 countToTwo:
-    - 'one'
-    - 'two'
+  - 'one'
+  - 'two'
 ```
 
 ```json
@@ -378,5 +378,24 @@ countToTwo:
 [Travis CI API - DOC](https://docs.travis-ci.com/api)
 
 trusty: a very specific version of linux (very small and suitable for small app)
+
+```yaml
+script:
+  - nohup npm run start &
+```
+
+- nohup : no hang up, keep this command running.
+  - if the shell is closed, dont kill anything this command creates
+- npm run start
+- & : Run this command in a subshell(in the background)
+
+```sh
+npm run start &
+# Listening on port 5000
+pkill node
+# [1]  + terminated  npm run start
+cal
+# Calendar
+```
 
 </details>
