@@ -349,4 +349,27 @@ CI Flow
 - Codeship
 - AWS Codebuild
 
+### 126. The Basics of YAML Files
+
+```
+# .yaml
+languagesIKnow:
+    english: 'very well'
+    spanish: 'kindof'
+countToTwo:
+    - 'one'
+    - 'two'
+```
+
+```json
+// .json
+{
+  "languagesIKnow": {
+    "english": "very well",
+    "spanish": "kindof"
+  },
+  "countToTwo": ["one", "two"]
+}
+```
+
 </details>
