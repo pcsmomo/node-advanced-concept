@@ -415,4 +415,15 @@ Set up for MongDB, Express API and Redis Server
 5. Make sure server starts on port 3000 in CI mode
 6. Make sure server serves react client files in CI mode
 
+### 134. A Touch More Configuration
+
+```js
+// tests/helpers/page.js
+// Set up for CI
+const browser = await puppeteer.launch({
+  headless: true,
+  args: ['--no-sandbox'] // it will dramatically decrease amount of time to test
+});
+```
+
 </details>

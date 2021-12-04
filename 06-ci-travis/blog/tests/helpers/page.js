@@ -4,9 +4,32 @@ const userFactory = require('../factories/userFactory');
 
 class CustomPage {
   static async build() {
-    const browser = await puppeteer.launch({
-      headless: false
-    });
+    // Set up for local dev
+    // const browser = await puppeteer.launch({
+    //   headless: false
+    // });
+
+    // Set up for CI
+    // const browser = await puppeteer.launch({
+    //   headless: true,
+    //   args: ['--no-sandbox']
+    // });
+
+    let browser;
+    if (['ci'].includes(process.env.NODE_ENV)) {
+      // if (process.env.NODE_ENV === 'ci') {
+      // Set up for CI
+      browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox']
+      });
+    } else {
+      // } else if (process.env.NODE_ENV === 'test') {
+      // Set up for local dev
+      browser = await puppeteer.launch({
+        headless: false
+      });
+    }
 
     const page = await browser.newPage();
     const customPage = new CustomPage(page);
@@ -29,7 +52,7 @@ class CustomPage {
     await this.page.setCookie({ name: 'session', value: session });
     await this.page.setCookie({ name: 'session.sig', value: sig });
 
-    await this.page.goto('localhost:3000/blogs');
+    await this.page.goto('http://localhost:3000/blogs');
     await this.page.waitFor('a[href="/auth/logout"]'); // if test fails, it will hang here. waiting the logouts
   }
 
