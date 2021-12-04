@@ -304,4 +304,23 @@ await page.waitFor('.card'); // we should wait when navigating to the other page
 
 [page.evaluate() - puppeteer DOC](https://github.com/puppeteer/puppeteer/blob/v12.0.1/docs/api.md#pageevaluatepagefunction-args)
 
+### 123. Super Advanced Test Helpers
+
+1. Create helpers 'get' and 'post'
+
+```js
+// evaluate takes args as only strings, so it will occur an error
+get(path) {
+  return this.page.evaluate(() => {
+    return fetch(path, {});
+  })
+};
+⬇️⬇️⬇️
+get(path) {
+  return this.page.evaluate((_path) => {
+    return fetch(_path, {});
+  }, path)
+};
+```
+
 </details>
