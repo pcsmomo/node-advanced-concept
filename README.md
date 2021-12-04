@@ -344,7 +344,7 @@ CI Flow
 
 ### 125. CI Providers
 
-- [Travis CI](https://travis-ci.org/)
+- [Travis CI](https://travis-ci.com/)
 - Circle CI
 - Codeship
 - AWS Codebuild
@@ -431,5 +431,13 @@ const browser = await puppeteer.launch({
 1. Create github repository, `blog-node-ci`
 2. Set github uri
    - `git remote add origin git@github.com:pcsmomo/blog-node-ci.git`
+
+### 136. Travis CI Setup
+
+Um... travis-ci.org -> travis-ci.com
+
+1. Create a new account in Travis ci
+   - it automatically connected my github account
+2. Activate my repository, `blog-node-ci`
 
 </details>
