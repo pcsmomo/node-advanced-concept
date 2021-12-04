@@ -300,4 +300,8 @@ await page.waitFor('.card'); // we should wait when navigating to the other page
   - Test this script on the browser, both logged in and loggin out
 - [fetch() options - MDN](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
 
+### 119. Executed Arbitrary JS in Chromium
+
+[page.evaluate() - puppeteer DOC](https://github.com/puppeteer/puppeteer/blob/v12.0.1/docs/api.md#pageevaluatepagefunction-args)
+
 </details>
