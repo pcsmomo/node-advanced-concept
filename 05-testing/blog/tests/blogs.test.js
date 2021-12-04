@@ -30,13 +30,22 @@ describe('When logged in', async () => {
       await page.click('form button');
     });
 
-    test('Submitting tasks user to review screen', async () => {
+    test('Submitting takes user to review screen', async () => {
       const text = await page.getContentsOf('h5');
 
       expect(text).toEqual('Please confirm your entries');
     });
 
-    // test('Submitting then saving adds blog to index page', async () => {});
+    test('Submitting then saving adds blog to index page', async () => {
+      await page.click('button.green');
+      await page.waitFor('.card'); // we should wait when navigating to the other page
+
+      const title = await page.getContentsOf('.card-title');
+      const content = await page.getContentsOf('p');
+
+      expect(title).toEqual('My Title');
+      expect(content).toEqual('My Content');
+    });
   });
 
   describe('And using invalid inputs', async () => {

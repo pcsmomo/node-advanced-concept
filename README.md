@@ -272,4 +272,22 @@ Timeout - Async callback was not invoked within the 5000ms timeout specified by 
 jest.setTimeout(30000);
 ```
 
+### 116. Asserting Blog Creation
+
+```js
+await page.waitFor('.card'); // we should wait when navigating to the other page
+```
+
+> ⚠️TypeError: Cannot create property '\_called' on number '10' \
+> This error message didn't show up When running test case one by one with `test.only`\
+> But running all tests together, this warning occurs.\
+> Could not find a clear answer. Guessing this lecture is a bit outdated.\
+> Latest version of jest and puppeteer might not have this issue??\
+> https://stackoverflow.com/questions/63226326/jest-with-puppeteer-typeerror-cannot-create-property-called-on-number-11
+
+```js
+"jest": "^22.1.4", -> "27.4.3"
+"puppeteer": "^1.0.0" -> "12.0.1",
+```
+
 </details>
