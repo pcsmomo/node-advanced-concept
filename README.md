@@ -329,4 +329,17 @@ await page.waitFor('.card'); // we should wait when navigating to the other page
 > When running all tests together, this warning message occurs.\
 > But When running test case one by one with `test.only` or `describe.only`, all test pass\
 
+## Section 6 - Wiring Up Continuous Integration
+
+### 124. Introduction to CI
+
+CI Flow
+
+1. Developer pushes code to github
+2. CI Server detects that a new push of code has occured
+3. CI Server clones project to a cloud-based virtual machine
+4. CI Server runs all tests
+5. if all tests pass, CI Server marks build as 'passing' and does some optional followup
+6. (option) Send an email, automatically deploy, put notification on Github, etc...
+
 </details>
