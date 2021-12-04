@@ -2,7 +2,7 @@
 
 // POST
 () => {
-  fetch('/api/blogs', {
+  return fetch('/api/blogs', {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
@@ -14,11 +14,11 @@
 
 // Get
 () => {
-  fetch('/api/blogs', {
+  return fetch('/api/blogs', {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json'
     }
-  });
+  }).then(res => res.json());
 };
