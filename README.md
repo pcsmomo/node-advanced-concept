@@ -306,21 +306,27 @@ await page.waitFor('.card'); // we should wait when navigating to the other page
 
 ### 123. Super Advanced Test Helpers
 
-1. Create helpers 'get' and 'post'
+1. Create helpers `get` and `post`
+   - ```js
+      // evaluate takes args as only strings, so it will occur an error
+      get(path) {
+        return this.page.evaluate(() => {
+          return fetch(path, {});
+        })
+      };
+      ⬇️⬇️⬇️
+      get(path) {
+        return this.page.evaluate((_path) => {
+          return fetch(_path, {});
+        }, path)
+      };
+     ```
+2. Create a helper `execRequests`
+   - [Promise.all() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 
-```js
-// evaluate takes args as only strings, so it will occur an error
-get(path) {
-  return this.page.evaluate(() => {
-    return fetch(path, {});
-  })
-};
-⬇️⬇️⬇️
-get(path) {
-  return this.page.evaluate((_path) => {
-    return fetch(_path, {});
-  }, path)
-};
-```
+> Unfortunately,
+> ⚠️TypeError: Cannot create property '\_called' on number '10' \
+> When running all tests together, this warning message occurs.\
+> But When running test case one by one with `test.only` or `describe.only`, all test pass\
 
 </details>
