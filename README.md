@@ -398,4 +398,12 @@ cal
 # Calendar
 ```
 
+### 131. Using Travis Documentation
+
+Set up for MongDB, Express API and Redis Server
+
+- [Setting up Databases and Services - DOC](https://docs.travis-ci.com/user/database-setup/)
+- [Setting up MongoDB - DOC](https://docs.travis-ci.com/user/database-setup/#mongodb)
+- [Setting up Redis - DOC](https://docs.travis-ci.com/user/database-setup/#redis)
+
 </details>
