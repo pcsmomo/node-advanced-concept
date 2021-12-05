@@ -488,4 +488,13 @@ Done. Your build exited with 0.
 
 When I upload image via Express API, it will use a lot resource of the node server (CPU usage is going up rapidly)
 
+### 145. Upload Flow with AWS S3
+
+1. Client -> Server : Client tells server it needs to upload a file to S3. Includes file name and file type
+2. Server -> AWS S3 : Server askes S3 for a presigned URL
+3. AWS S3 -> Server : S3 gives server a presigned URL. Works "only" for a file matching the original file name
+4. Server -> Client : Server sends url to React client
+5. Client -> Server : React client uploads image file directly to s3 server
+6. Server -> Client : React client tells server the upload was successful. Server saves URL of that new image with the blog post
+
 </details>
