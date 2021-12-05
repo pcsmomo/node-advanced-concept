@@ -473,7 +473,15 @@ Done. Your build exited with 0.
 
 1. Where do images get physically stored?
    1. in MongoDB(cloud): too expensive for storing images (bad approach)
+   2. in HD Attached to Server
+   3. \*Outside Data Store
 2. How do images _get_ to the place they should be stored?
 3. How do we relate images to a particular blog post?
+
+### 143. Upload Constraints
+
+1. (Express API) Only signed in users should be able to upload
+2. (Express API) The uploaded image needs to be tied to the blog posts that's being created
+3. We should only allow images (.jpg, .png, etc) to be uploaded
 
 </details>
