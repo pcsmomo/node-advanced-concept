@@ -503,7 +503,7 @@ IAM: Identity and Access Management
 
 ### 153. Creating S3 Buckets
 
-S3 -> Create bucket -> 'blogster-bucket-noah'
+S3 -> Create bucket -> `blogster-bucket-noah`
 
 ### 154. Allowing Actions with IAM Policies
 
@@ -514,7 +514,20 @@ S3 -> Create bucket -> 'blogster-bucket-noah'
     - Bucket -> Add ARN -> Bucket name : blogster-bucket-noah
     - Object -> Add ARN -> Bucket name: blogster-bucket-noah, Object name: Check Any
   - Review
-    - name: s3-blogster-bucket
+    - name: `s3-blogster-bucket`
   - Create policy
+
+### 155. Creating IAM Users
+
+- IAM -> User
+  - Add user
+    - User name: `s3-blogster-bucket`
+    - Access key - Programmatic access : check
+  - Permissions
+    - Attach existing policies directly
+    - select s3-blogster-bucket
+  - My "Access key ID" and "Secret access key" will be appealed
+
+And save "accessKeyId" and "secretAccessKey" on config/dev.js
 
 </details>
