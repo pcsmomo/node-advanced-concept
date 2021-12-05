@@ -497,4 +497,8 @@ When I upload image via Express API, it will use a lot resource of the node serv
 5. Client -> Server : React client uploads image file directly to s3 server
 6. Server -> Client : React client tells server the upload was successful. Server saves URL of that new image with the blog post
 
+## 152. AWS Credentials with IAM
+
+IAM: Identity and Access Management
+
 </details>
