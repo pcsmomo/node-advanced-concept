@@ -530,4 +530,11 @@ S3 -> Create bucket -> `blogster-bucket-noah`
 
 And save "accessKeyId" and "secretAccessKey" on config/dev.js
 
+### 156. Upload Routes Files
+
+```sh
+npm install --save aws-sdk
+# it was included already, "aws-sdk": "^2.188.0",
+```
+
 </details>
