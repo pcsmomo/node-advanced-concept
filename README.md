@@ -501,4 +501,8 @@ When I upload image via Express API, it will use a lot resource of the node serv
 
 IAM: Identity and Access Management
 
+### 153. Creating S3 Buckets
+
+S3 -> Create bucket -> 'blogster-bucket-noah'
+
 </details>
