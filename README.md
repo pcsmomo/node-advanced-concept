@@ -505,4 +505,16 @@ IAM: Identity and Access Management
 
 S3 -> Create bucket -> 'blogster-bucket-noah'
 
+### 154. Allowing Actions with IAM Policies
+
+- IAM -> Policies -> Create Policy
+  - Service: S3
+  - Actions: All S3 actions
+  - Resources
+    - Bucket -> Add ARN -> Bucket name : blogster-bucket-noah
+    - Object -> Add ARN -> Bucket name: blogster-bucket-noah, Object name: Check Any
+  - Review
+    - name: s3-blogster-bucket
+  - Create policy
+
 </details>
