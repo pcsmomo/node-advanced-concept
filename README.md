@@ -484,4 +484,8 @@ Done. Your build exited with 0.
 2. (Express API) The uploaded image needs to be tied to the blog posts that's being created
 3. We should only allow images (.jpg, .png, etc) to be uploaded
 
+### 144. Image File Transport
+
+When I upload image via Express API, it will use a lot resource of the node server (CPU usage is going up rapidly)
+
 </details>
