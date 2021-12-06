@@ -572,4 +572,10 @@ app.get('/api/upload', requireLogin, (req, res) => {
 
 Navigate `http://localhost:5000/api/upload`
 
+### 161. Attempting Image Upload
+
+CORS Error
+
+Access to XMLHttpRequest at 'https://blogster-bucket-noah.s3.amazonaws.com/61abc0e87883a63b924a27c7/7658e8c0-56cf-11ec-936e-c12d647a5899.jpeg?AWSAccessKeyId=AKIAXQLRYDCS6OFMZNBX&Content-Type=image%2Fjpeg&Expires=1638821858&Signature=2%2FezCiUFt1dYC2f3DtwnyJVceMs%3D' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: It does not have HTTP ok status.
+
 </details>
