@@ -537,12 +537,35 @@ npm install --save aws-sdk
 # it was included already, "aws-sdk": "^2.188.0",
 ```
 
-### 157. Configuring the AWS SDK
+### 158. GetSignedURL Arguments
 
 - [AWS SDK for JavaScript Documentation](https://docs.aws.amazon.com/sdk-for-javascript/index.html)
 - [Version 2](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/index.html)
 - [Version 3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html)
 
 [AWS SDK S3 - getSignedUrl()](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getSignedUrl-property)
+
+### 159. Calling GetSignedURL
+
+```sh
+npm install --save uuid
+# "uuid": "^3.2.1" installed already
+```
+
+```js
+app.get('/api/upload', requireLogin, (req, res) => {
+  const key = `${req.user.id}/${uuid()}.jpeg`;
+
+  s3.getSignedUrl(
+    'putObject',
+    {
+      Bucket: 'blogster-bucket-noah',
+      ContentType: 'jpeg',
+      Key: key
+    },
+    (err, url) => res.send({ key, url })
+  );
+});
+```
 
 </details>
