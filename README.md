@@ -568,4 +568,8 @@ app.get('/api/upload', requireLogin, (req, res) => {
 });
 ```
 
+### 160. Viewing the Signed URL
+
+Navigate `http://localhost:5000/api/upload`
+
 </details>
