@@ -537,4 +537,12 @@ npm install --save aws-sdk
 # it was included already, "aws-sdk": "^2.188.0",
 ```
 
+### 157. Configuring the AWS SDK
+
+- [AWS SDK for JavaScript Documentation](https://docs.aws.amazon.com/sdk-for-javascript/index.html)
+- [Version 2](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/index.html)
+- [Version 3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html)
+
+[AWS SDK S3 - getSignedUrl()](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getSignedUrl-property)
+
 </details>
