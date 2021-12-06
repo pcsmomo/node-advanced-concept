@@ -45,13 +45,13 @@ class BlogFormReview extends Component {
     event.preventDefault();
 
     const { submitBlog, history, formValues } = this.props;
-
+    // console.log(this.state.file);
     submitBlog(formValues, this.state.file, history);
   }
 
   onFileChange(event) {
     this.setState({ file: event.target.files[0] });
-    console.log(event.target.files);
+    // console.log(event.target.files);
   }
 
   render() {

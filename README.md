@@ -578,4 +578,55 @@ CORS Error
 
 Access to XMLHttpRequest at 'https://blogster-bucket-noah.s3.amazonaws.com/61abc0e87883a63b924a27c7/7658e8c0-56cf-11ec-936e-c12d647a5899.jpeg?AWSAccessKeyId=AKIAXQLRYDCS6OFMZNBX&Content-Type=image%2Fjpeg&Expires=1638821858&Signature=2%2FezCiUFt1dYC2f3DtwnyJVceMs%3D' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: It does not have HTTP ok status.
 
+### 162. Handling CORS Errors
+
+[CORS configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html)
+
+```xml
+<CORSConfiguration>
+  <CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <AllowedHeader>Authorization</AllowedHeader>
+  </CORSRule>
+  <CORSRule>
+    <AllowedOrigin>http://localhost:3000</AllowedOrigin>
+    <AllowedMethod>PUT</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <AllowedHeader>*</AllowedHeader>
+  </CORSRule>
+</CORSConfiguration>
+```
+
+```json
+[
+  {
+    "AllowedHeaders": ["Authorization"],
+    "AllowedMethods": ["GET"],
+    "AllowedOrigins": ["*"],
+    "ExposeHeaders": [],
+    "MaxAgeSeconds": 3000
+  },
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["PUT"],
+    "AllowedOrigins": ["http://localhost:3000"],
+    "ExposeHeaders": [],
+    "MaxAgeSeconds": 3000
+  }
+]
+```
+
+And try to upload a image file
+
+```
+createError.js:16 Uncaught (in promise) Error: Request failed with status code 403
+    at createError (createError.js:16)
+    at settle (settle.js:18)
+    at XMLHttpRequest.handleLoad (xhr.js:77)
+```
+
+> Damn... it accepts only 'jpeg', not 'png'. I was stuck here for 30 mins
+
 </details>
