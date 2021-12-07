@@ -580,6 +580,8 @@ Access to XMLHttpRequest at 'https://blogster-bucket-noah.s3.amazonaws.com/61abc
 
 ### 162. Handling CORS Errors
 
+AWS S3 -> Buckets -> `blogster-bucket-noah` -> Permissions -> Cross-origin resource sharing (CORS)
+
 [CORS configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html)
 
 ```xml
@@ -629,4 +631,55 @@ createError.js:16 Uncaught (in promise) Error: Request failed with status code 4
 
 > Damn... it accepts only 'jpeg', not 'png'. I was stuck here for 30 mins
 
+### 164. S3 Bucket Policies
+
+1. AWS S3 -> Buckets -> `blogster-bucket-noah` -> Permissions -> Block public access (bucket settings)
+   - uncheck `Block all public access`
+   - (optional) check `Block public access to buckets and objects granted through new access control lists (ACLs)`
+   - (optional) check `Block public access to buckets and objects granted through any access control lists (ACLs)`
+2. AWS S3 -> Buckets -> `blogster-bucket-noah` -> Permissions -> Bucket policy -> Edit -> Policy generator
+
+- Select Type of Policy : S3 Bucket Policy
+- Effect : Allow
+- Principal: \*
+- AWS Service : Amazon S3
+- Actions : Check GetObject
+- Amazon Resource Name (ARN): arn:aws:s3:::blogster-bucket-noah/\*
+  - `/*` is at the end
+
+```json
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "Statement1",
+			"Principal": {},
+			"Effect": "Allow",
+			"Action": [],
+			"Resource": []
+		}
+	]
+}
+⬇️⬇️⬇️
+{
+  "Id": "Policy1638857854737",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1638857849992",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::blogster-bucket-noah/*",
+      "Principal": "*"
+    }
+  ]
+}
+
+Now the image is for public
+
+https://blogster-bucket-noah.s3.ap-southeast-2.amazonaws.com/61abc0e87883a63b924a27c7/5d43f400-56d5-11ec-bce8-071d4a401e86.jpeg
+
 </details>
+```
