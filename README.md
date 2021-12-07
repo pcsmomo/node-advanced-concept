@@ -676,10 +676,15 @@ createError.js:16 Uncaught (in promise) Error: Request failed with status code 4
     }
   ]
 }
+```
 
 Now the image is for public
 
 https://blogster-bucket-noah.s3.ap-southeast-2.amazonaws.com/61abc0e87883a63b924a27c7/5d43f400-56d5-11ec-bce8-071d4a401e86.jpeg
 
+### 166. Ensuring Images get Tied
+
+we stored `imageUrl: uploadConfig.data.key`, which is folder/file name into the mongodb \
+It is **a good practice not to store whole path**, in case we change our S3 bucket name and so on
+
 </details>
-```
